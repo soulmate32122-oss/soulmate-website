@@ -5,594 +5,227 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>苏眉 — 让身体回归她本来的样子</title>
 <style>
-  /* ===== 全局重置 & 字体 ===== */
+  /* ===== 全局 ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
-
-  :root {
-    --cream: #faf7f2;
-    --warm-white: #fefcf9;
-    --sage: #8b9e7c;
-    --sage-light: #c5d3b8;
-    --sage-dark: #6b7d5e;
-    --terracotta: #c27a5c;
-    --terracotta-light: #e8b9a3;
-    --bark: #4a3f35;
-    --bark-light: #7a6e63;
-    --text: #3a322a;
-    --text-light: #7a7065;
-    --golden: #d4a853;
-    --divider: #e5ddd2;
-  }
-
   html { scroll-behavior: smooth; }
 
-  body {
-    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--warm-white);
-    color: var(--text);
-    line-height: 1.8;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
+  :root {
+    --baby-blue: #A8D8EA;
+    --baby-blue-light: #D6EEF5;
+    --baby-blue-dark: #6BB5CE;
+    --white: #FFFFFF;
+    --off-white: #F7FAFB;
+    --dark-gray: #3A3A3A;
+    --mid-gray: #6B6B6B;
+    --light-gray: #C8C8C8;
+    --accent-coral: #E88D7D;
+    --accent-gold: #C9A96E;
+    --accent-green: #7BAE7F;
   }
 
-  /* ===== 排版 ===== */
-  .serif { font-family: 'Noto Serif SC', serif; }
-  h1, h2, h3 { font-family: 'Noto Serif SC', serif; color: var(--bark); }
-
-  h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2.5rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+  body {
+    font-family: "SimSun", "宋体", "Songti SC", "Noto Serif SC", serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* ===== 导航 ===== */
   nav {
     position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgba(254, 252, 249, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--divider);
-    transition: all 0.3s ease;
+    top: 0; width: 100%; z-index: 1000;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--baby-blue-light);
   }
-
-  nav .nav-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-    height: 64px;
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 60px;
   }
-
   .nav-logo {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--bark);
-    text-decoration: none;
-    letter-spacing: 0.08em;
+    font-family: "SimSun","宋体",serif;
+    font-size: 1.6rem; font-weight: bold;
+    color: var(--baby-blue-dark); text-decoration: none;
+    letter-spacing: 0.1em;
   }
-
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; align-items: center; }
   .nav-links a {
-    text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
+    text-decoration: none; color: var(--dark-gray);
+    font-size: 0.9rem; letter-spacing: 0.04em;
     transition: color 0.3s;
-    font-weight: 400;
   }
-  .nav-links a:hover { color: var(--terracotta); }
+  .nav-links a:hover { color: var(--baby-blue-dark); }
+
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a::after { content: " ▾"; font-size: 0.7rem; }
+  .nav-dropdown-menu {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: var(--white); border: 1px solid var(--baby-blue-light);
+    border-radius: 6px; min-width: 180px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 0.5rem 0; z-index: 10;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-menu a {
+    display: block; padding: 0.5rem 1.2rem;
+    font-size: 0.85rem; white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { background: var(--baby-blue-light); }
+
+  .nav-cta a {
+    background: var(--baby-blue); color: var(--dark-gray) !important;
+    padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: bold;
+    transition: background 0.3s;
+  }
+  .nav-cta a:hover { background: var(--baby-blue-dark); color: white !important; }
 
   .mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--bark);
+    display: none; background: none; border: none;
+    font-size: 1.6rem; cursor: pointer; color: var(--dark-gray);
   }
 
   /* ===== Hero ===== */
   .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 6rem 2rem 4rem;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(170deg, var(--cream) 0%, #f5efe4 40%, #ede4d8 100%);
+    min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; text-align: center;
+    padding: 6rem 2rem 4rem; position: relative; overflow: hidden;
+    background: linear-gradient(180deg, #E8F4F8 0%, #F0F7FA 40%, var(--white) 100%);
   }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -30%;
-    right: -15%;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(139, 158, 124, 0.08) 0%, transparent 70%);
+  .hero-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0.25; z-index: 0;
   }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -20%;
-    left: -10%;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(194, 122, 92, 0.06) 0%, transparent 70%);
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 700px;
-  }
-
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
   .hero-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    color: var(--sage-dark);
-    border: 1px solid var(--sage-light);
-    padding: 0.4rem 1.2rem;
-    border-radius: 50px;
-    margin-bottom: 2rem;
-    font-weight: 400;
+    display: inline-block; font-size: 0.85rem; letter-spacing: 0.15em;
+    color: var(--baby-blue-dark); border: 1px solid var(--baby-blue);
+    padding: 0.4rem 1.4rem; border-radius: 50px; margin-bottom: 2rem;
   }
-
   .hero h1 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: 1.35;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.06em;
+    font-family: "SimSun","宋体",serif;
+    font-size: 3rem; font-weight: bold; line-height: 1.4;
+    margin-bottom: 1.5rem; color: var(--dark-gray);
   }
-
-  .hero h1 .highlight {
-    color: var(--terracotta);
-    position: relative;
-  }
-
+  .hero h1 em { font-style: normal; color: var(--baby-blue-dark); }
   .hero-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    margin-bottom: 2.5rem;
-    line-height: 1.9;
+    font-size: 1.1rem; color: var(--mid-gray); margin-bottom: 2.5rem; line-height: 2;
   }
+  .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 0.75rem 2rem;
+    border-radius: 30px; text-decoration: none;
+    font-size: 0.95rem; letter-spacing: 0.05em; transition: all 0.3s;
+  }
+  .btn-primary {
+    background: var(--baby-blue-dark); color: white;
+  }
+  .btn-primary:hover { background: #5A9DB8; }
+  .btn-outline {
+    border: 1.5px solid var(--baby-blue-dark); color: var(--baby-blue-dark);
+  }
+  .btn-outline:hover { background: var(--baby-blue-light); }
 
-  .hero-scroll {
-    margin-top: 3rem;
-    animation: float 2s ease-in-out infinite;
-    color: var(--bark-light);
-    font-size: 0.85rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .hero-scroll::after {
-    content: ' ↓';
-    display: block;
-    font-size: 1.2rem;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
-  }
-
-  /* ===== 区块 ===== */
+  /* ===== 通用区块 ===== */
   section { padding: 5rem 2rem; }
-
-  .section-inner {
-    max-width: 800px;
-    margin: 0 auto;
+  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section-wide { max-width: 1100px; margin: 0 auto; }
+  h2 {
+    font-family: "SimSun","宋体",serif;
+    font-size: 2rem; text-align: center; margin-bottom: 2.5rem;
+    color: var(--dark-gray); letter-spacing: 0.06em;
+  }
+  h3 {
+    font-family: "SimSun","宋体",serif;
+    font-size: 1.3rem; color: var(--dark-gray); margin-bottom: 1rem;
   }
 
-  .section-wide {
-    max-width: 1000px;
-    margin: 0 auto;
+  /* ===== 首页关于区块 ===== */
+  .home-about { background: var(--off-white); }
+  .about-img {
+    width: 100%; max-width: 500px; border-radius: 12px;
+    margin: 0 auto 2rem; display: block;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
   }
-
-  /* ===== 关于区块 ===== */
-  #about {
-    background: var(--warm-white);
+  .about-text { font-size: 1.05rem; color: var(--dark-gray); line-height: 2.1; }
+  .about-text strong { color: var(--baby-blue-dark); }
+  .certs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 3rem 0;
   }
-
-  .about-intro {
-    font-size: 1.15rem;
-    text-align: center;
-    color: var(--text-light);
-    margin-bottom: 4rem;
-    line-height: 2;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .about-intro strong { color: var(--bark); font-weight: 500; }
-
-  /* 时间线 */
-  .timeline { position: relative; padding: 2rem 0; }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--divider);
-  }
-
-  .timeline-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 3rem;
-    position: relative;
-  }
-
-  .timeline-item:nth-child(odd) { flex-direction: row; }
-  .timeline-item:nth-child(even) { flex-direction: row-reverse; }
-
-  .timeline-dot {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--sage);
-    border: 3px solid var(--warm-white);
-    z-index: 2;
-    top: 6px;
-  }
-
-  .timeline-content {
-    width: 42%;
-    padding: 1.5rem 2rem;
-    background: var(--cream);
-    border-radius: 12px;
-    border: 1px solid var(--divider);
-  }
-
-  .timeline-item:nth-child(odd) .timeline-content { margin-right: 8%; }
-  .timeline-item:nth-child(even) .timeline-content { margin-left: 8%; }
-
-  .timeline-content h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-    color: var(--bark);
-    font-weight: 600;
-  }
-
-  .timeline-content .emoji { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
-
-  .timeline-content p {
-    color: var(--text-light);
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
-
-  /* 证书卡片 */
-  .certs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 4rem;
-  }
-
   .cert-card {
-    background: var(--cream);
-    border: 1px solid var(--divider);
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .cert-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
-  }
-
-  .cert-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .cert-card h4 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1rem;
-    color: var(--bark);
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-  }
-
-  .cert-card p {
-    color: var(--text-light);
-    font-size: 0.85rem;
-    line-height: 1.6;
-  }
-
-  /* 金句 */
-  .golden-quote {
-    text-align: center;
-    padding: 3rem 2rem;
-    margin: 3rem 0 1rem;
-    background: linear-gradient(135deg, rgba(212, 168, 83, 0.06), rgba(194, 122, 92, 0.04));
-    border-radius: 16px;
-    border: 1px solid rgba(212, 168, 83, 0.15);
-  }
-
-  .golden-quote blockquote {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.3rem;
-    color: var(--bark);
-    font-weight: 600;
-    line-height: 1.8;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .golden-quote blockquote::before { content: '「'; }
-  .golden-quote blockquote::after { content: '」'; }
-
-  /* 实验列表 */
-  .experiments {
-    margin-top: 4rem;
-    background: var(--cream);
-    border-radius: 16px;
-    padding: 2.5rem;
-    border: 1px solid var(--divider);
-  }
-
-  .experiments h3 {
-    text-align: center;
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    font-weight: 600;
-  }
-
-  .exp-list { display: grid; gap: 1.2rem; }
-
-  .exp-item {
-    display: flex;
-    align-items: baseline;
-    gap: 0.8rem;
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-  .exp-icon {
-    font-size: 1.2rem;
-    flex-shrink: 0;
-    margin-top: 0.15rem;
-  }
-
-  .exp-item strong { color: var(--bark); font-weight: 500; }
-  .exp-item span { color: var(--text-light); font-size: 0.9rem; }
-
-  /* ===== Naturism 科普 ===== */
-  #naturism {
-    background: var(--cream);
-    position: relative;
-  }
-
-  .myth-buster {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .myth-card {
-    background: var(--warm-white);
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    border: 1px solid var(--divider);
+    background: var(--white); border: 1px solid var(--baby-blue-light);
+    border-radius: 12px; padding: 2rem 1.5rem; text-align: center;
     transition: transform 0.3s;
   }
+  .cert-card:hover { transform: translateY(-4px); }
+  .cert-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .cert-card h4 { font-size: 1rem; color: var(--dark-gray); margin-bottom: 0.4rem; }
+  .cert-card p { color: var(--mid-gray); font-size: 0.85rem; }
 
-  .myth-card:hover { transform: translateY(-3px); }
-
-  .myth-x {
-    font-size: 2rem;
-    color: var(--terracotta);
-    margin-bottom: 0.5rem;
-  }
-
-  .myth-card h4 {
-    font-size: 1rem;
-    color: var(--terracotta);
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-
-  .myth-card p {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.05rem;
-    color: var(--bark);
-    font-weight: 600;
-  }
-
-  .naturism-body {
-    font-size: 1.05rem;
-    line-height: 2;
-    color: var(--text);
-  }
-
-  .naturism-body p {
-    margin-bottom: 1.5rem;
-  }
-
-  .naturism-body .highlight-box {
-    background: var(--warm-white);
-    border-left: 3px solid var(--sage);
-    padding: 1.5rem 2rem;
-    margin: 2rem 0;
-    border-radius: 0 12px 12px 0;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.1rem;
-    color: var(--bark);
+  .golden-quote {
+    text-align: center; padding: 2.5rem; margin: 2rem 0;
+    background: var(--baby-blue-light); border-radius: 12px;
+    font-family: "SimSun","宋体",serif;
+    font-size: 1.2rem; color: var(--baby-blue-dark); font-weight: bold;
     line-height: 1.9;
   }
 
-  /* ===== 声明 ===== */
-  #disclaimer {
-    background: var(--warm-white);
-    text-align: center;
+  .exp-list {
+    display: grid; gap: 1rem; margin-top: 2rem;
+    background: var(--white); padding: 2rem; border-radius: 12px;
+    border: 1px solid var(--baby-blue-light);
   }
+  .exp-item { display: flex; gap: 0.8rem; align-items: baseline; }
+  .exp-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .exp-item strong { color: var(--dark-gray); }
+  .exp-item span { color: var(--mid-gray); font-size: 0.9rem; }
 
-  .disclaimer-box {
-    background: var(--cream);
-    border-radius: 16px;
-    padding: 2.5rem;
-    border: 1px solid var(--divider);
-    max-width: 700px;
-    margin: 0 auto;
+  /* ===== 首页预览卡片（子页面入口） ===== */
+  .preview-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
   }
-
-  .disclaimer-box p {
-    color: var(--text-light);
-    font-size: 0.95rem;
-    line-height: 2;
+  .preview-card {
+    background: var(--white); border: 1px solid var(--baby-blue-light);
+    border-radius: 12px; overflow: hidden; text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s; display: block;
   }
-
-  .disclaimer-box .warning {
-    display: inline-block;
-    background: var(--terracotta-light);
-    color: var(--terracotta);
-    padding: 0.3rem 1rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
+  .preview-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+  .preview-card img {
+    width: 100%; height: 200px; object-fit: cover; display: block;
   }
-
-  /* ===== 联系 / 页脚 ===== */
-  #contact {
-    background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
-    text-align: center;
-    padding-bottom: 4rem;
+  .preview-card-body { padding: 1.5rem; }
+  .preview-card-body h4 {
+    font-family: "SimSun","宋体",serif;
+    font-size: 1.05rem; color: var(--dark-gray); margin-bottom: 0.5rem;
   }
+  .preview-card-body p { color: var(--mid-gray); font-size: 0.85rem; line-height: 1.7; }
 
-  .contact-card {
-    background: var(--warm-white);
-    border-radius: 16px;
-    padding: 3rem 2rem;
-    border: 1px solid var(--divider);
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.02);
-  }
-
-  .contact-card .name {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.6rem;
-    color: var(--bark);
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
-
-  .contact-card .location {
-    color: var(--text-light);
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .contact-card .title-line {
-    color: var(--sage-dark);
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-bottom: 2rem;
-    letter-spacing: 0.05em;
-  }
-
-  .contact-card .closing {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.15rem;
-    color: var(--bark);
-    font-weight: 600;
-    line-height: 1.8;
-  }
-
+  /* ===== 页脚 ===== */
   footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-light);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--divider);
+    background: var(--dark-gray); color: #AAA; text-align: center;
+    padding: 2rem; font-size: 0.85rem; line-height: 2;
   }
-
-  footer a {
-    color: var(--sage-dark);
-    text-decoration: none;
-  }
-  footer a:hover { color: var(--terracotta); }
+  footer a { color: var(--baby-blue-light); text-decoration: none; }
+  footer a:hover { color: white; }
+  .footer-nav { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
 
   /* ===== 响应式 ===== */
   @media (max-width: 768px) {
-    h2 { font-size: 1.6rem; margin-bottom: 2rem; }
-
-    .hero h1 { font-size: 2.2rem; }
-
+    h2 { font-size: 1.5rem; }
+    .hero h1 { font-size: 2rem; }
     .nav-links { display: none; }
     .mobile-menu-btn { display: block; }
-
     .nav-links.open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 64px;
-      left: 0;
-      right: 0;
-      background: rgba(254, 252, 249, 0.95);
-      backdrop-filter: blur(12px);
-      padding: 1.5rem 2rem;
-      gap: 1.2rem;
-      border-bottom: 1px solid var(--divider);
+      display: flex; flex-direction: column; position: absolute;
+      top: 60px; left: 0; right: 0; background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px); padding: 1.5rem 2rem; gap: 1rem;
+      border-bottom: 1px solid var(--baby-blue-light);
     }
-
-    .timeline::before { left: 1.5rem; }
-
-    .timeline-item, .timeline-item:nth-child(even) {
-      flex-direction: row;
-      padding-left: 3rem;
-    }
-
-    .timeline-dot { left: 1.5rem; }
-
-    .timeline-content {
-      width: 100%;
-      margin: 0 !important;
-    }
-
-    .certs { grid-template-columns: 1fr; }
-    .myth-buster { grid-template-columns: 1fr; }
-
-    .golden-quote blockquote { font-size: 1.1rem; }
+    .nav-dropdown-menu { position: static; display: none; box-shadow: none; border: none; padding-left: 1rem; }
+    .nav-dropdown.open .nav-dropdown-menu { display: block; }
+    .certs-grid { grid-template-columns: 1fr; }
+    .preview-grid { grid-template-columns: 1fr; }
     section { padding: 3rem 1.5rem; }
-  }
-
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 1.8rem; }
-    .hero-subtitle { font-size: 0.95rem; }
   }
 </style>
 </head>
@@ -601,63 +234,72 @@
 <!-- ===== 导航 ===== -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">苏眉</a>
+    <a href="index.html" class="nav-logo">苏眉</a>
     <button class="mobile-menu-btn" id="menuBtn" aria-label="菜单">☰</button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">关于</a></li>
-      <li><a href="#naturism">Naturism</a></li>
-      <li><a href="#disclaimer">声明</a></li>
-      <li><a href="#contact">联系</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html">关于天体</a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">关于天体</a>
+          <a href="myth.html">常见误区</a>
+          <a href="faq.html">常见问题</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="yoga.html">天体瑜伽</a>
+        <div class="nav-dropdown-menu">
+          <a href="yoga.html">Nothing 瑜伽</a>
+          <a href="camp.html">天体疗愈营</a>
+        </div>
+      </li>
+      <li><a href="wellness.html">女性身心健康</a></li>
+      <li class="nav-dropdown">
+        <a href="lifestyle.html">自然生活方式</a>
+        <div class="nav-dropdown-menu">
+          <a href="lifestyle.html">自然生活美学</a>
+          <a href="blog.html">资讯/心声</a>
+        </div>
+      </li>
+      <li><a href="terms.html">使用条款</a></li>
+      <li class="nav-cta"><a href="join.html">加入苏眉</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- ===== Hero ===== -->
 <section class="hero" id="home">
+  <img class="hero-bg" src="https://d3c546d509.cbaul-cdnwnd.com/2201024d31cb574d0a26f1ad1cc252f1/200000004-e6291e6293/1000037515.jpeg?ph=d3c546d509" alt="">
   <div class="hero-content">
-    <div class="hero-tag">自然生活实验室</div>
-    <h1>
-      让身体<br>回归她<span class="highlight">本来的样子</span>
-    </h1>
+    <div class="hero-tag">苏眉 · 自然生活实验室</div>
+    <h1>让身体<br>回归她<em>本来的样子</em></h1>
     <p class="hero-subtitle">
       关于 Braless · 裸睡 · 天体疗愈<br>
       女性身心健康 · 不说教，只分享真实体验
     </p>
-    <a href="#about" class="hero-scroll">探索苏眉的故事</a>
+    <div class="hero-buttons">
+      <a href="about.html" class="btn btn-primary">了解 Naturism</a>
+      <a href="join.html" class="btn btn-outline">加入苏眉天友</a>
+    </div>
   </div>
 </section>
 
 <!-- ===== 关于 ===== -->
-<section id="about">
+<section class="home-about" id="about">
   <div class="section-inner">
     <h2>我是怎么走到这里的</h2>
-
-    <p class="about-intro">
+    <img class="about-img" src="https://d3c546d509.cbaul-cdnwnd.com/2201024d31cb574d0a26f1ad1cc252f1/200000128-53e9253e94/1000039338.jpeg?ph=d3c546d509" alt="苏眉">
+    <p class="about-text" style="text-align:center; max-width:650px; margin: 0 auto;">
       七年前，我在广州一家广告公司上班。<br>
-      某天下班回家，与许多女生的习惯一样，<strong>马上脱掉内衣的束缚</strong>，在那一刻，我突然想到一个问题：<br>
+      某天下班回家，马上脱掉内衣的束缚，在那一刻，我突然想到一个问题：<br>
       <strong>「我每天穿这个，到底是为了谁？」</strong>
     </p>
-
-    <p class="about-intro" style="font-size: 1rem;">
+    <p class="about-text" style="text-align:center; margin-top:1.5rem;">
       这个问题像一粒石子，扔进了一潭平静的水。<br>
       于是，我开始研究。查了很多资料，也查了我自己……<br>
-      我意识到，从小到大，我们对自己身体的很多"习惯"，其实从来没有人认真解释过为什么，只是「大家都这样」。
+      后来，我决定辞职，花了两年时间，系统地学习了三门学科：
     </p>
 
-    <!-- 时间线 -->
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <span class="emoji">🏢</span>
-          <h3>决定辞职</h3>
-          <p>离开广告公司，踏上寻找身心本质的旅程。花了两年时间，系统地学习三门最接近身心本质的学科。</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 证书 -->
-    <div class="certs">
+    <div class="certs-grid">
       <div class="cert-card">
         <div class="cert-icon">🌿</div>
         <h4>英国芳疗师认证</h4>
@@ -675,153 +317,96 @@
       </div>
     </div>
 
-    <!-- 金句 -->
     <div class="golden-quote">
-      <blockquote>
-        所有疗愈技术的核心，都是同一件事：帮助身体回到它本来的状态
-      </blockquote>
+      所有疗愈技术的核心，都是同一件事：<br>帮助身体回到它本来的状态
     </div>
 
-    <!-- 实验 -->
-    <div class="experiments">
-      <h3>于是我开始做实验</h3>
-      <div class="exp-list">
-        <div class="exp-item">
-          <span class="exp-icon">🌱</span>
-          <div><strong>不穿内衣</strong> <span>— 第1个月很奇怪，第3个月回不去了</span></div>
-        </div>
-        <div class="exp-item">
-          <span class="exp-icon">🥬</span>
-          <div><strong>茹素饮食</strong> <span>— 是身体喜欢</span></div>
-        </div>
-        <div class="exp-item">
-          <span class="exp-icon">🌙</span>
-          <div><strong>裸睡</strong> <span>— 睡眠质量提升了，不是心理作用</span></div>
-        </div>
-        <div class="exp-item">
-          <span class="exp-icon">🏠</span>
-          <div><strong>在家不穿衣服</strong> <span>— 最初三天很尴尬，现在觉得穿衣服才奇怪</span></div>
-        </div>
-        <div class="exp-item">
-          <span class="exp-icon">🌍</span>
-          <div><strong>天体疗愈营</strong> <span>— 第一天想逃，第二天哭了很久，第三天才真正放松了。之后每年都参加一至两次</span></div>
-        </div>
-      </div>
+    <h3 style="text-align:center; margin-top:3rem;">于是我开始做实验</h3>
+    <div class="exp-list">
+      <div class="exp-item"><span class="exp-icon">🌱</span><div><strong>不穿内衣</strong> <span>— 第1个月很奇怪，第3个月回不去了</span></div></div>
+      <div class="exp-item"><span class="exp-icon">🥬</span><div><strong>茹素饮食</strong> <span>— 是身体喜欢</span></div></div>
+      <div class="exp-item"><span class="exp-icon">🌙</span><div><strong>裸睡</strong> <span>— 睡眠质量提升了，不是心理作用</span></div></div>
+      <div class="exp-item"><span class="exp-icon">🏠</span><div><strong>在家不穿衣服</strong> <span>— 最初三天很尴尬，现在觉得穿衣服才奇怪</span></div></div>
+      <div class="exp-item"><span class="exp-icon">🌍</span><div><strong>天体疗愈营</strong> <span>— 第一天想逃，第二天哭了很久，第三天才真正放松了。之后每年都参加一至两次</span></div></div>
     </div>
 
-    <p style="text-align: center; margin-top: 3rem; color: var(--text-light); line-height: 2;">
+    <p style="text-align:center; margin-top:3rem; color: var(--mid-gray); line-height:2;">
       这个网站，是我记录这些实验的地方。<br>
       我没有资格说这些对你也适用。<br>
-      但如果你也有那种<strong style="color: var(--bark);">「好像少了点什么」</strong>的感觉，也许我们可以聊聊。
+      但如果你也有那种<strong style="color:var(--baby-blue-dark);">「好像少了点什么」</strong>的感觉，也许我们可以聊聊。<br><br>
+      <em>苏眉 · 深圳/香港 · 自然生活研究员 · 在家裸居第七年</em>
     </p>
   </div>
 </section>
 
-<!-- ===== Naturism ===== -->
-<section id="naturism">
+<!-- ===== 子页面预览卡片 ===== -->
+<section style="background: var(--white);">
   <div class="section-wide">
-    <h2>Naturism 是什么</h2>
-
-    <p style="text-align: center; font-family: 'Noto Serif SC', serif; font-size: 1.2rem; color: var(--bark); font-weight: 600; margin-bottom: 3rem;">
-      不是你想的那样
-    </p>
-
-    <p style="text-align: center; color: var(--text-light); max-width: 600px; margin: 0 auto 3rem; line-height: 2;">
-      在中文互联网上，它长期被误解。<br>这里是一个认真的解释。
-    </p>
-
-    <!-- 辟谣卡片 -->
-    <div class="myth-buster">
-      <div class="myth-card">
-        <div class="myth-x">✕</div>
-        <h4>这是色情？</h4>
-        <p>不是</p>
-      </div>
-      <div class="myth-card">
-        <div class="myth-x">✕</div>
-        <h4>这是变态行为？</h4>
-        <p>不是</p>
-      </div>
-      <div class="myth-card">
-        <div class="myth-x">✕</div>
-        <h4>这是西方的奇怪文化？</h4>
-        <p>不是</p>
-      </div>
-    </div>
-
-    <div class="naturism-body">
-      <p>
-        我不是因为「想裸体」才接触 Naturism 的。我是因为某一天终于注意到：<strong>我们从小就被教会了对自己的身体感到羞耻</strong>。不能说，不能看，不能碰，遮住，藏好……
-      </p>
-      <p>
-        这种羞耻感，已经渗入了我们跟自己身体的每一次互动。
-      </p>
-
-      <div class="highlight-box">
-        Naturism 对我来说，不是「必须裸体生活」，而是一个练习：<br>
-        <strong>学会以平静的眼光看待自己的身体，不加评判，不加羞耻。</strong><br>
-        从这里出发，很多东西都开始变了。
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 声明 ===== -->
-<section id="disclaimer">
-  <div class="section-inner">
-    <div class="disclaimer-box">
-      <div class="warning">⚠️ 浏览须知</div>
-      <p>
-        请不要带着有色眼镜或别有用心。苏眉纯粹地在我们来这个世界时的模样落墨，去掉最贴身的爱恶执着，重返最低层次的自然。创造健康 + 哲学 + 美学 + 艺术混合体。
-      </p>
-      <p style="margin-top: 1.2rem; font-weight: 500; color: var(--bark);">
-        18岁以下的朋友，请你邀请你的监护人一同浏览。
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 联系 ===== -->
-<section id="contact">
-  <div class="section-inner">
-    <h2>大方做自己</h2>
-
-    <div class="contact-card">
-      <p class="name">苏眉</p>
-      <p class="location">深圳 / 香港</p>
-      <p class="title-line">自然生活研究员 · 在家裸居第七年</p>
-
-      <p class="closing">
-        我们只陪你<br>「回到本来就很好」的自己
-      </p>
+    <h2>探索更多</h2>
+    <div class="preview-grid">
+      <a href="about.html" class="preview-card">
+        <img src="https://d3c546d509.cbaul-cdnwnd.com/2201024d31cb574d0a26f1ad1cc252f1/200000138-2f5fb2f5fc/1000039336.jpeg?ph=d3c546d509" alt="关于天体">
+        <div class="preview-card-body">
+          <h4>Naturism 是什么</h4>
+          <p>不是你想的那样。在中文互联网上它长期被误解，这里是一个认真的解释。</p>
+        </div>
+      </a>
+      <a href="yoga.html" class="preview-card">
+        <img src="https://d3c546d509.cbaul-cdnwnd.com/2201024d31cb574d0a26f1ad1cc252f1/200000148-6302663028/1000039429-4.jpeg?ph=d3c546d509" alt="天体瑜伽">
+        <div class="preview-card-body">
+          <h4>Nothing 瑜伽</h4>
+          <p>天体瑜伽在生理上带来的独特实质益处，提升皮肤健康、优化运动机能。</p>
+        </div>
+      </a>
+      <a href="wellness.html" class="preview-card">
+        <img src="https://d3c546d509.cbaul-cdnwnd.com/2201024d31cb574d0a26f1ad1cc252f1/200000150-726ce726d3/1000039430.jpeg?ph=d3c546d509" alt="女性身心健康">
+        <div class="preview-card-body">
+          <h4>女性身心健康</h4>
+          <p>Braless、裸睡、Home Naked、不穿内裤的十大利益，解放束缚。</p>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ===== 页脚 ===== -->
 <footer>
-  <p>© 苏眉 Sumei · 自然生活实验室</p>
-  <p style="margin-top: 0.5rem;">本网站不含任何支付功能，仅为个人经验分享</p>
+  <div class="footer-nav">
+    <a href="about.html">关于天体</a>
+    <a href="yoga.html">天体瑜伽</a>
+    <a href="wellness.html">女性身心健康</a>
+    <a href="lifestyle.html">自然生活方式</a>
+    <a href="camp.html">天体疗愈营</a>
+    <a href="faq.html">常见问题</a>
+    <a href="join.html">加入苏眉</a>
+    <a href="terms.html">使用条款</a>
+  </div>
+  <p>© 苏眉 Soulmate · 自然生活实验室</p>
+  <p style="margin-top:0.3rem;">让身体回归她本来的样子</p>
 </footer>
 
-<!-- ===== 移动菜单 JS ===== -->
 <script>
   const menuBtn = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
-
   menuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('open');
     menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
   });
-
-  // 点击导航链接后关闭菜单
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
       menuBtn.textContent = '☰';
     });
   });
+  // 移动端下拉菜单
+  document.querySelectorAll('.nav-dropdown > a').forEach(dd => {
+    dd.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('open');
+      }
+    });
+  });
 </script>
-
 </body>
 </html>

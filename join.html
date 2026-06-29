@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立即成为苏眉天友 :: 苏眉</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .pricing-card {
+    background: var(--white); border: 1px solid var(--baby-blue-light);
+    border-radius: 16px; padding: 2.5rem; text-align: center;
+    transition: transform 0.3s; position: relative;
+  }
+  .pricing-card:hover { transform: translateY(-4px); }
+  .pricing-card.featured { border: 2px solid var(--baby-blue-dark); }
+  .pricing-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--baby-blue-dark); color: white; padding: 0.3rem 1.5rem;
+    border-radius: 20px; font-size: 0.85rem; font-weight: bold;
+  }
+  .pricing-price { font-size: 2.5rem; color: var(--baby-blue-dark); font-weight: bold; margin: 1rem 0; }
+  .pricing-price span { font-size: 1rem; color: var(--mid-gray); font-weight: normal; }
+  .pricing-features { list-style: none; padding: 0; text-align: left; line-height: 2.2; margin: 1.5rem 0; color: var(--dark-gray); }
+  .pricing-features li::before { content: "✓ "; color: var(--accent-green); font-weight: bold; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">苏眉</a>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="菜单">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-dropdown"><a href="about.html">关于天体</a><div class="nav-dropdown-menu"><a href="about.html">关于天体</a><a href="myth.html">常见误区</a><a href="faq.html">常见问题</a></div></li>
+      <li class="nav-dropdown"><a href="yoga.html">天体瑜伽</a><div class="nav-dropdown-menu"><a href="yoga.html">Nothing 瑜伽</a><a href="camp.html">天体疗愈营</a></div></li>
+      <li><a href="wellness.html">女性身心健康</a></li>
+      <li class="nav-dropdown"><a href="lifestyle.html">自然生活方式</a><div class="nav-dropdown-menu"><a href="lifestyle.html">自然生活美学</a><a href="blog.html">资讯/心声</a></div></li>
+      <li><a href="terms.html">使用条款</a></li>
+      <li class="nav-cta"><a href="join.html">加入苏眉</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top: 100px;">
+  <div class="section-inner">
+    <h2>立即成为苏眉天友</h2>
+    <p style="text-align:center; color:var(--mid-gray); margin-bottom:2rem;">加入「苏眉 · 自然实验室」的苏眉天友会：回归本来的自己</p>
+
+    <p style="text-align:center; color:var(--dark-gray); line-height:2; margin-bottom:3rem;">
+      在这里，我们不谈社会标签，只谈生命本真。为了守护这一方纯净、安全且高频的疗愈场域，<br>
+      苏眉实行 <strong style="color:var(--baby-blue-dark);">全员邀请与审核制</strong>。
+    </p>
+
+    <div style="background:var(--baby-blue-light);border-radius:12px;padding:2rem;text-align:center;margin-bottom:3rem;">
+      <p style="font-weight:bold;color:var(--baby-blue-dark);">入会准则</p>
+      <p>苏眉仅对 <strong>女性、夫妇及情侣</strong> 开放。我们坚拒单身男性加入，以确保场域内的能量纯粹与女性成员的绝对安全感。</p>
+    </div>
+
+    <h3 style="color:var(--baby-blue-dark);text-align:center;">尊享苏眉天友权益</h3>
+    <ul style="line-height:2.5;max-width:500px;margin:1.5rem auto;">
+      <li>🎯 <strong>优先预约权</strong> — 优先参与泰国天体海滩/会所疗愈营</li>
+      <li>🌿 <strong>私属疗愈方案</strong> — 由苏眉亲自定制芳晶能量与情绪咨询</li>
+      <li>🧘 <strong>苏眉天友限定课</strong> — 免费参与每月线上能量冥想练习</li>
+      <li>💬 <strong>纯净社群</strong> — 加入"苏眉天友"私密圈</li>
+      <li>💰 <strong>专属折扣</strong> — 尊享线下营队项目苏眉天友专属价</li>
+    </ul>
+
+    <h3 style="color:var(--baby-blue-dark);text-align:center;margin-top:3rem;">会员方案</h3>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin:2rem 0;">
+      <div class="pricing-card featured">
+        <div class="pricing-badge">🔥 前30位早鸟</div>
+        <h4 style="color:var(--baby-blue-dark);">苏眉创会天友</h4>
+        <p style="color:var(--mid-gray);font-size:0.85rem;">Founding Member</p>
+        <div class="pricing-price">9,900<span>/年</span></div>
+        <p style="color:var(--mid-gray);font-size:0.8rem;text-decoration:line-through;">原价 19,800元/年</p>
+        <ul class="pricing-features">
+          <li>包含单项服务1.5小时标准体验一次</li>
+          <li>1.5小时单项服务全年VVIP 7折</li>
+          <li>泰国营创始会员内部价</li>
+          <li>泰国营优先选房权</li>
+          <li>名额活动一律优先</li>
+          <li>永久享受半价续费</li>
+        </ul>
+        <p style="color:var(--mid-gray);font-size:0.8rem;margin-top:1rem;">适用：高净值女性、精英伴侣、对隐私安全有极高要求的资深疗愈受众</p>
+      </div>
+
+      <div class="pricing-card">
+        <h4 style="color:var(--baby-blue-dark);">苏眉天友</h4>
+        <p style="color:var(--mid-gray);font-size:0.85rem;">普通会员</p>
+        <div class="pricing-price">4,999<span>/年</span></div>
+        <ul class="pricing-features">
+          <li>1.5小时单项服务全年VIP 8折</li>
+          <li>优先参与疗愈营</li>
+          <li>每月线上能量冥想</li>
+          <li>苏眉天友私密社群</li>
+        </ul>
+        <p style="color:var(--mid-gray);font-size:0.8rem;margin-top:1rem;">适用：刚开始对"天体"或"深度身心灵"感兴趣，追求性价比的都市中产</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--baby-blue-dark);text-align:center;margin-top:3rem;">次卡方案</h3>
+    <div style="background:var(--off-white);border-radius:12px;padding:2rem;text-align:center;max-width:500px;margin:1rem auto;">
+      <p><strong>单次初体验价：</strong>880 - 1,280元 / 1.5小时</p>
+      <p style="margin-top:1rem;"><strong>入心套餐：</strong>2,600元 / 3次（限3个月内用完）</p>
+      <p style="color:var(--mid-gray);font-size:0.85rem;">No.03-07 任选三项</p>
+      <p style="margin-top:1rem;color:var(--accent-coral);"><strong>次卡转苏眉天友：</strong>完成三次疗愈后，送一瓶调配的专属精油。</p>
+    </div>
+
+    <h3 style="color:var(--baby-blue-dark);text-align:center;margin-top:3rem;">会费分配说明</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center;margin:1.5rem 0;">
+      <div style="background:var(--baby-blue-light);padding:1.5rem;border-radius:12px;"><strong style="font-size:1.5rem;">30%</strong><p style="font-size:0.85rem;color:var(--mid-gray);">隐私安保系统</p></div>
+      <div style="background:var(--baby-blue-light);padding:1.5rem;border-radius:12px;"><strong style="font-size:1.5rem;">20%</strong><p style="font-size:0.85rem;color:var(--mid-gray);">行政成本</p></div>
+      <div style="background:var(--baby-blue-light);padding:1.5rem;border-radius:12px;"><strong style="font-size:1.5rem;">10%</strong><p style="font-size:0.85rem;color:var(--mid-gray);">慈善捐献</p></div>
+      <div style="background:var(--baby-blue-light);padding:1.5rem;border-radius:12px;"><strong style="font-size:1.5rem;">40%</strong><p style="font-size:0.85rem;color:var(--mid-gray);">预存资金</p></div>
+    </div>
+
+    <div style="background:var(--accent-coral);color:white;border-radius:12px;padding:1.5rem;text-align:center;margin:2rem 0;">
+      <p style="font-size:1.1rem;font-weight:bold;">不接单男，是为了让每一位女性都能在苏眉的场域里，实现真正的裸露自由与呼吸自由。</p>
+    </div>
+
+    <p style="text-align:center;color:var(--mid-gray);font-size:0.85rem;margin-top:2rem;">
+      注：苏眉保留各条款最终解释权；苏眉具有会员入会批核权；苏眉具有续会批核权。<br>
+      全额抵扣政策：凡在30天内体验过单次或套餐课程的学员，申请加入苏眉天友年度会员时，当日消费的金额可全额抵扣首年年费。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-nav">
+    <a href="about.html">关于天体</a><a href="yoga.html">天体瑜伽</a><a href="wellness.html">女性身心健康</a><a href="lifestyle.html">自然生活方式</a><a href="camp.html">天体疗愈营</a><a href="faq.html">常见问题</a><a href="join.html">加入苏眉</a><a href="terms.html">使用条款</a>
+  </div>
+  <p>© 苏眉 Soulmate · 自然生活实验室</p>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
